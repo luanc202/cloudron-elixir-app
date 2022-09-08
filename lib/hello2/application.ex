@@ -3,6 +3,9 @@ defmodule Hello2.Application do
   # for more information on OTP Applications
   @moduledoc false
 
+  IO.puts("#{Application.fetch_env!(:hello2, :env1)} and #{Application.fetch_env!(:hello2, :env2)}")
+
+
   use Application
 
   @impl true
