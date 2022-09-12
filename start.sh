@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+echo "THE START SCRIPT HAS STARTED"
 set -eu
 
 # ensure that data directory is owned by 'cloudron' user
