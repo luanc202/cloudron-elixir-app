@@ -23,9 +23,6 @@ RUN wget http://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && su
 RUN apt-get update -y
 RUN apt-get install -y elixir
 
-# install hex and phoenix
-RUN mix local.hex --force
-
 # copy code
 COPY assets/ /app/code/
 COPY config/ /app/code/
@@ -41,5 +38,8 @@ COPY config/config-template.exs /app/data/
 #create link for config.exs
 RUN ln -sf /app/data/config.exs /app/code/config.exs
 RUN chmod +x start.sh
+
+# install hex and phoenix
+RUN mix local.hex --force
 
 CMD [ "/app/code/start.sh" ]
