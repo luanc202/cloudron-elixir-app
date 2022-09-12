@@ -2,6 +2,7 @@ FROM cloudron/base:3.2.0@sha256:ba1d566164a67c266782545ea9809dc611c4152e27686fd1
 
 RUN mkdir -p /app/code
 WORKDIR /app/code
+ENV HEX_HOME /root/.hex/packages/hexpm
 
 # install asdf
 # RUN git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
@@ -40,6 +41,9 @@ RUN ln -sf /app/data/config.exs /app/code/config.exs
 RUN chmod +x start.sh
 
 # install hex and phoenix
+RUN echo "Installing hex now..."
 RUN mix local.hex --force
+RUN mix deps.get --force
+
 
 CMD [ "/app/code/start.sh" ]
